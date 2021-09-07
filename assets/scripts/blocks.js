@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   $("#runBtn").click(function () {
     runcode();
@@ -10,7 +11,7 @@ $(document).ready(function () {
 
 Blockly.JavaScript["bot"] = function(block) {
   var txe="Please select Questions block";
-  
+  console.log('here in BOT');
   var code = `
 	var inputTexntValue = "${txe}";
   `;
@@ -19,9 +20,20 @@ Blockly.JavaScript["bot"] = function(block) {
 
 Blockly.JavaScript["questions"] = function (block) {
   var text_input = block.getFieldValue("QUESTION");
-  console.log(this.getPreviousBlock().type);
+  console.log('here in question',text_input);
+  var prevblock=this.getPreviousBlock()?.type;
+  let state;
+  if(prevblock=='bot'){
+    state=true;
+  }else{
+    state=false;
+  }
   var code = `
-    var inputTextValue="Please drap the Bot Block"
+  if(${state}){
+    var inputTextValue = "${text_input}";
+  }else{
+	  var inputTextValue = "Please Join the Bot and Questions Block .";
+  }
   `;
   return code;
 };
@@ -35,15 +47,16 @@ function redrawUi() {
   if (typeof inputTextValue !== "undefined") {
     $("#inputBox").text(inputTextValue);
   } else {
-    $("#inputBox").text("");
+    $("#inputBox").text("Please Join the Bot and Questions Block .");
   }
 }
 
 function runcode() {
   var geval = eval;
+  console.log('clicked')
   try {
+    
     geval(Blockly.JavaScript.workspaceToCode(workspace));
-    console.log('no error occured')
     redrawUi();
   } catch (e) {
     console.log(e);

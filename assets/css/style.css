@@ -27,6 +27,8 @@ body {
 
 .header{
   padding: 5rem 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .head-text{
