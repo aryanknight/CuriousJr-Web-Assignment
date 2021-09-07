@@ -29,11 +29,37 @@ $(document).ready(function () {
 //   return code;
 // };
 
+let inputValue;
+let isBlock=false;
+
+// Blockly.JavaScript["bot"] = function(block) {
+//   var txe="Please select Questions block";
+//   isBlock=true;
+//   var code = `
+// 	var inputTexntValue = "${txe}";
+//   `;
+//   return Blockly.JavaScript.statementToCode(block, "VALUE");
+// };
+
+// Blockly.JavaScript["questions"] = function (block) {
+//   var text_input = block.getFieldValue("QUESTION");
+//   console.log('here in question');
+//   var code = `if(${isBlock}){
+//     var inputTextValue="${text_input}"
+//     isBlock=false
+//   }else{
+//     var inputTextValue="Please drap the Bot Block"
+//     console.log('print nothing')
+//   }
+//   `;
+//   return code;
+// };
+
 
 Blockly.JavaScript["bot"] = function(block) {
   var txe="Please select Questions block";
   
-  console.log('here in BOT')
+  isBlock=true;
   var code = `
 	var inputTexntValue = "${txe}";
   `;
@@ -42,9 +68,9 @@ Blockly.JavaScript["bot"] = function(block) {
 
 Blockly.JavaScript["questions"] = function (block) {
   var text_input = block.getFieldValue("QUESTION");
-  console.log('here in question',text_input)
+  console.log(this.getPreviousBlock().type);
   var code = `
-	var inputTextValue = "${text_input}";
+    var inputTextValue="Please drap the Bot Block"
   `;
   return code;
 };
@@ -64,10 +90,9 @@ function redrawUi() {
 
 function runcode() {
   var geval = eval;
-  console.log('clicked')
   try {
-    
     geval(Blockly.JavaScript.workspaceToCode(workspace));
+    console.log('no error occured')
     redrawUi();
   } catch (e) {
     console.log(e);
