@@ -21,7 +21,7 @@ Blockly.JavaScript["bot"] = function(block) {
 Blockly.JavaScript["questions"] = function (block) {
   var text_input = block.getFieldValue("QUESTION");
   console.log('here in question',text_input);
-  var prevblock=this.getPreviousBlock()?.type;
+  var prevblock=this.getPreviousBlock()?.type;       // Instead of this we can also check if the parent block has an attached chld block .
   let state;
   if(prevblock=='bot'){
     state=true;
