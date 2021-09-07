@@ -78,6 +78,7 @@ function runcode() {
 
 function reset() {
   delete inputTextValue;
+  $("#inputBox").text("ANSWER WILL APPEAR HERE");
   Blockly.mainWorkspace.clear();
   redrawUi();
 }
