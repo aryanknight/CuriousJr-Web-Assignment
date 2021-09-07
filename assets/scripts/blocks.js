@@ -55,7 +55,6 @@ var workspace = Blockly.inject("blocklyDiv", {
 });
 
 function redrawUi() {
-  console.log('inREDRWAUI',inputTextValue)
   if (typeof inputTextValue !== "undefined") {
     $("#inputBox").text(inputTextValue);
   } else {
@@ -80,5 +79,4 @@ function reset() {
   delete inputTextValue;
   $("#inputBox").text("ANSWER WILL APPEAR HERE");
   Blockly.mainWorkspace.clear();
-  redrawUi();
 }
