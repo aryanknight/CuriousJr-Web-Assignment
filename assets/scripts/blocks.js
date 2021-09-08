@@ -39,7 +39,7 @@ Blockly.JavaScript["questions"] = function (block) {
 };
 
 var workspace = Blockly.inject("blocklyDiv", {
-  media: "assets/media/",
+  media: "assets/media/",maxBlocks: 2,                 //limiting max number of blocks to 2
   toolbox: document.getElementById("toolbox"),
 });
 
